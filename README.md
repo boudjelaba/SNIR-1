@@ -16,51 +16,51 @@ https://www.instructables.com/How-to-Use-XBee-Modules-As-Transmitter-Receiver-Ar
 
 File myFile;
 
-int pinCS = 53; // Pin 10 on Arduino Uno
+int pinCS = 10; // Pin 53 on Arduino Mega
 
 void setup() {
     
   Serial.begin(9600);
   pinMode(pinCS, OUTPUT);
   
-  // SD Card Initialization
+  // Initialisation carte SD
   if (SD.begin())
   {
-    Serial.println("SD card is ready to use.");
+    Serial.println("Carte SD est prète à être utilisée.");
   } else
   {
-    Serial.println("SD card initialization failed");
+    Serial.println("Echec de l'initailisation de la carte SD");
     return;
   }
   
-  // Create/Open file 
-  myFile = SD.open("test.txt", FILE_WRITE);
+  // Création/Ouverture du fichier 
+  myFile = SD.open("Test.txt", FILE_WRITE);
   
-  // if the file opened okay, write to it:
+  // Si le fichier est bien ouvert, on écrit dans le fichier :
   if (myFile) {
-    Serial.println("Writing to file...");
-    // Write to file
-    myFile.println("Testing text 1, 2 ,3...");
-    myFile.close(); // close the file
-    Serial.println("Done.");
+    Serial.println("Ecriture dans le fichier ...");
+    // Ecriture dans le fichier
+    myFile.println("Texte de test 1, 2 ,3...");
+    myFile.close(); // Ferméture du fichier
+    Serial.println("Terminé.");
   }
-  // if the file didn't open, print an error:
+  // Si le fichier ne peut pas être ouvert, afficher erreur :
   else {
-    Serial.println("error opening test.txt");
+    Serial.println("erreur d'ouverture du fichier Test.txt");
   }
 
-  // Reading the file
-  myFile = SD.open("test.txt");
+  // Lecture du fichier
+  myFile = SD.open("Test.txt");
   if (myFile) {
-    Serial.println("Read:");
-    // Reading the whole file
+    Serial.println("Lecture :");
+    // Lire tout le fichier
     while (myFile.available()) {
       Serial.write(myFile.read());
    }
     myFile.close();
   }
   else {
-    Serial.println("error opening test.txt");
+    Serial.println("Erreur d'ouverture Test.txt");
   }
   
 }
