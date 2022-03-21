@@ -13,6 +13,16 @@ https://www.instructables.com/How-to-Use-XBee-Modules-As-Transmitter-Receiver-Ar
 ## QT
 
 ```cpp
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QMessageBox>
+#include <QPixmap>
+#include <QFile>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QDir>
+
+
 void MainWindow::on_pushButton_clicked()
 {
     QFile file("Chemin/nom.txt");
