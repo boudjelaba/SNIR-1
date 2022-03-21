@@ -10,6 +10,38 @@ https://www.instructables.com/How-to-Use-XBee-Modules-As-Transmitter-Receiver-Ar
 
 ---
 
+## QT
+
+```cpp
+void MainWindow::on_pushButton_clicked()
+{
+    QFile file("Chemin/nom.txt");
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::warning(this,"title","file not open");
+    }
+    QTextStream out(&file);
+    QString text = ui->plainTextEdit->toPlainText();
+    out << text;
+    file.flush();
+    file.close();
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QFile file("/Chemin/nom.txt");
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
+        QMessageBox::warning(this,"title","file not open");
+    }
+    QTextStream in(&file);
+    QString text = in.readAll();
+    ui->plainTextEdit->setPlainText(text);
+    file.close();
+}
+```
+
+---
+
 ```cpp
 #include <SD.h>
 #include <SPI.h>
