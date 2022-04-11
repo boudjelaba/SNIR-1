@@ -44,7 +44,7 @@ int i=0;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("Un message va etre envoye toutes les deux secondes des maintenant !");
+  Serial.println("Un message toutes les 2 secondes");
 }
 
 void loop() {
