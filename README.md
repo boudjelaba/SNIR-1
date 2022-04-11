@@ -38,3 +38,27 @@ https://www.framboise314.fr/wp-content/uploads/2017/11/03_1_1_InstallationQt_LED
 
 https://www.electronicsforu.com/electronics-projects/setting-qt-software-on-raspberry-pi
 
+
+```cpp
+int i=0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Un message va etre envoye toutes les deux secondes des maintenant !");
+}
+
+void loop() {
+  Serial.println("Message #" + String(i));
+  delay(2000);
+  i++;
+}
+```
+
+
+```python
+import serial
+
+serialArduino = serial.Serial('/dev/ttyXXXX', 9600)
+
+while True :
+  	print(serialArduino.readline())
