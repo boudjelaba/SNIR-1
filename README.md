@@ -68,7 +68,83 @@ void loop(void)
 }
 
 
+
 ___
+
+## Code Slave
+
+```cpp
+//SPI SLAVE (ARDUINO)
+//COMMUNICATION SPI ENTRE 2 ARDUINO 
+
+#include<SPI.h>
+#define LEDpin 7
+#define buttonpin 2
+volatile boolean received;
+volatile byte Slavereceived,Slavesend;
+int buttonvalue;
+int x;
+void setup()
+
+{
+  Serial.begin(115200);
+  
+  pinMode(buttonpin,INPUT);               // pin 2 : INPUT
+  pinMode(LEDpin,OUTPUT);                 // pin 7 : OUTPUT
+  pinMode(MISO,OUTPUT);                   //Définit MISO comme OUTPUT (il faut envoyer 
+                                          //des données à Master IN 
+
+  SPCR |= _BV(SPE);                       //Activer SPI en mode esclave
+  received = false;
+
+  SPI.attachInterrupt();                  //L'interruption ON est définie pour 
+                                          //la communication SPI 
+  
+}
+
+ISR (SPI_STC_vect)                        //Fonction de routine d'interruption 
+{
+  Slavereceived = SPDR;                   // Valeur reçue du maître si stockée 
+                                          //dans la variable  slavereceived
+  received = true;                        
+}
+
+void loop()
+{ if(received)                            //Logique pour définir LED ON ou OFF en fonction 
+                                          //de la valeur reçue du maître 
+   {
+      if (Slavereceived==1) 
+      {
+        digitalWrite(LEDpin,HIGH);         // pin 7 : HIGH LED ON
+        Serial.println("Slave LED ON");
+      }else
+      {
+        digitalWrite(LEDpin,LOW);          //pin 7 : LOW LED OFF
+        Serial.println("Slave LED OFF");
+      }
+      
+      buttonvalue = digitalRead(buttonpin);  // Lit l'état de la pin 2
+      
+      if (buttonvalue == HIGH)               //Logique pour définir la valeur de x à 
+                                             //envoyer au maître 
+      {
+        x=1;
+        
+      }else
+      {
+        x=0;
+      }
+      
+  Slavesend=x;                             
+  SPDR = Slavesend;                           //Envoie la valeur x au maître via SPDR 
+  delay(1000);
+}
+}
+```
+
+
+___
+---
 
 ## Code Servomoteur
 
