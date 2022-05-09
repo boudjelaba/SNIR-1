@@ -3,9 +3,9 @@
 https://www.youtube.com/watch?v=n5gor3Bdmmk#t=795s
 
 ---
-## Code Master 
+## Code Master
 
-``cpp
+```cpp
 //SPI MASTER (ARDUINO)
 //COMMUNICATION SPI ENTRE 2 ARDUINO 
 
