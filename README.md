@@ -1,4 +1,4 @@
-# SNIR_1
+# SNIR-1
 
 https://www.youtube.com/watch?v=n5gor3Bdmmk#t=795s
 
