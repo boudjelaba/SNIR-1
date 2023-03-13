@@ -28,3 +28,16 @@ print("liste =", lp)
 l = minMaxMoy(lp)
 print("min : {0[0]}, max : {0[1]}, moy : {0[2]}".format(l))
 ```
+
+---
+---
+
+```python
+while True:
+    try:
+        x=int(input("Veuillez saisir un nombre:"))
+        break
+    except ValueError:
+        print("Ceci n'est pas un nombre!!! Essayez de nouveau ...")
+print("Ok!")
+``
