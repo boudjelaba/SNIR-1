@@ -42,3 +42,13 @@ while True:
 print("Ok!")
 ```
 
+---
+---
+
+```HTML
+  <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/3261_RC08/embed_loader.js"></script>
+  <script type="text/javascript">
+    trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/m/0jgqg","geo":"FR","time":"today 12-m"},{"keyword":"/m/05z1_","geo":"FR","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"geo=FR&q=%2Fm%2F0jgqg,%2Fm%2F05z1_&hl=fr&date=today 12-m,today 12-m","guestPath":"https://trends.google.fr:443/trends/embed/"});
+  </script>
+
+```
